@@ -1,0 +1,50 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: 192.168.91.49:8848
+        namespace: test
+        file-extension: yaml
+        group: dev
+        enabled: true
+        username: spring-cloud
+        password: spring-cloud
+      discovery:
+        server-addr: 192.168.91.49:8848
+        namespace: test
+        group: dev
+        username: spring-cloud
+        password: spring-cloud
+
+  datasource:
+    druid:
+      url: jdbc:mysql://192.168.91.1:3306/nufs_dev?seUnicode=true&characterEncoding=utf-8&userSSL=false&serverTimezone=GMT%2B8
+      driver-class-name: com.mysql.jdbc.Driver
+      username: nufs_dev
+      password: nufs_dev
+      initial-size: 10
+      min-idle: 10
+      max-active: 50
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      filters: stat,wall,log4j
+      max-pool-prepared-statement-per-connection-size: 20
+      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      use-global-data-source-stat: true
+      stat-view-servlet:
+        login-username: admin
+        login-password: admin
+        reset-enable: false
+        url-pattern: /druid/*
+      web-stat-filter:
+        url-pattern: /*
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+
+
+
+
