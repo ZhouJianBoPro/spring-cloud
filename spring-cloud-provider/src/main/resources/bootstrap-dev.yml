@@ -1,3 +1,6 @@
+application:
+  env: dev
+
 spring:
   cloud:
     nacos:
@@ -55,6 +58,14 @@ spring:
       connectionTimeout: 3000
       socketTimeout: 5000
       maxAttempts: 5
+
+rocketmq:
+  namesrvAddr: 192.168.91.28:9876
+  producer:
+    groupName: spring-cloud-provider
+    vipChannelEnabled: false
+    retryTimesWhenSendFailed: 3
+    instanceName: spring-cloud-provider
 
 
 

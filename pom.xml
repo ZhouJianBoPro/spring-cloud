@@ -41,6 +41,7 @@
         <spring.cloud.context.version>3.1.0</spring.cloud.context.version>
         <spring.context.version>5.1.1.RELEASE</spring.context.version>
         <slf4j.version>1.7.25</slf4j.version>
+        <rocketmq.clinet.version>4.3.0</rocketmq.clinet.version>
     </properties>
 
     <!--子模块将自动继承-->
