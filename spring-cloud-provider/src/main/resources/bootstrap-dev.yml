@@ -45,6 +45,17 @@ spring:
         url-pattern: /*
         exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
 
+  redis:
+    password: test123
+    cluster:
+      nodes: 192.168.91.71:7001,192.168.91.72:7001,192.168.91.73:7001,192.168.91.74:7001,192.168.91.75:7001,192.168.91.76:7001
+    pool:
+      maxIdle: 50
+      maxTotal: 200
+      connectionTimeout: 3000
+      socketTimeout: 5000
+      maxAttempts: 5
+
 
 
 
