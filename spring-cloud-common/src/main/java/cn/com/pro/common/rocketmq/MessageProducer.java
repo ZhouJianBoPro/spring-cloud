@@ -60,6 +60,7 @@ public class MessageProducer {
         message.setTags(messageProduceDto.getTags());
         message.setKeys(messageProduceDto.getBizId());
         message.putUserProperty("producerGroup", defaultMQProducer.getProducerGroup());
+        message.setDelayTimeLevel(messageProduceDto.getDelayLevel());
         message.setBody(messageProduceDto.getBody().getBytes(RemotingHelper.DEFAULT_CHARSET));
         return message;
     }
