@@ -50,6 +50,7 @@
         <dependency>
             <groupId>com.cn.pro</groupId>
             <artifactId>spring-cloud-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
