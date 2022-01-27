@@ -12,7 +12,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @date Created in 2022/1/20 17:05
  **/
 @EnableDiscoveryClient
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"cn.com.pro.common"})
 @MapperScan("cn.com.pro.provider.db.mapper")
 public class ProviderApplication {
 
