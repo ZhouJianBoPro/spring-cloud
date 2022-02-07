@@ -1,0 +1,18 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+/.idea
+/*.iml
+/spring-cloud-api/target
+/spring-cloud-common/target
+/spring-cloud-consumer/target
+/spring-cloud-entity/target
+/spring-cloud-provider/target
+/spring-cloud-api/*.iml
+/spring-cloud-common/*.iml
+/spring-cloud-consumer/*.iml
+/spring-cloud-entity/*.iml
+/spring-cloud-provider/*.iml
+
