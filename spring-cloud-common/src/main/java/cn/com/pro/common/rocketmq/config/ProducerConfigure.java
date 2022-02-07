@@ -18,19 +18,19 @@ import org.springframework.context.annotation.Configuration;
 @RefreshScope
 public class ProducerConfigure {
 
-    @Value("${rocketmq.namesrvAddr}")
+    @Value("${rocket.namSrvAddr}")
     private String nameSrvAddr;
 
-    @Value("${rocketmq.producer.groupName}")
+    @Value("${rocket.producer.groupName}")
     private String groupName;
 
-    @Value("${rocketmq.producer.vipChannelEnabled}")
+    @Value("${rocket.producer.vipChannelEnabled}")
     private boolean vipChannelEnabled;
 
-    @Value("${rocketmq.producer.retryTimesWhenSendFailed}")
+    @Value("${rocket.producer.retryTimesWhenSendFailed}")
     private int retryTimesWhenSendFailed;
 
-    @Value("${rocketmq.producer.instanceName}")
+    @Value("${rocket.producer.instanceName}")
     private String instanceName;
 
     @Bean

@@ -59,8 +59,8 @@ spring:
       socketTimeout: 5000
       maxAttempts: 5
 
-rocketmq:
-  namesrvAddr: 192.168.91.28:9876
+rocket:
+  nameSrvAddr: 192.168.91.28:9876
   producer:
     groupName: spring-cloud-provider
     vipChannelEnabled: false
