@@ -23,7 +23,7 @@ import java.io.UnsupportedEncodingException;
 @Component
 public class MessageProducer {
 
-    @Value("${application.env}")
+    @Value("${spring.profiles.active}")
     private String env;
 
     private final DefaultMQProducer defaultMQProducer;

@@ -1,6 +1,3 @@
-application:
-  env: dev
-
 spring:
   cloud:
     nacos:
