@@ -19,7 +19,7 @@ import org.springframework.context.annotation.Configuration;
 @RefreshScope
 public class ProducerConfigure {
 
-    @Value("${rocket.namSrvAddr}")
+    @Value("${rocket.nameSrvAddr}")
     private String nameSrvAddr;
 
     /**
