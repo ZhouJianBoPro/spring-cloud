@@ -1,5 +1,6 @@
 package cn.com.pro.provider.rest;
 
+import cn.com.pro.common.redis.RedisManager;
 import cn.com.pro.provider.db.model.TLoanSucceedExtraInfo;
 import cn.com.pro.provider.db.service.ITestService;
 import com.alibaba.fastjson.JSONObject;
@@ -22,10 +23,14 @@ public class TestRest {
     @Autowired
     private ITestService testService;
 
+    @Autowired
+    private RedisManager redisManager;
+
     @RequestMapping(value = "/testMethod1", method = RequestMethod.GET)
     String testMethod1(@RequestParam("name") String name) {
 
         TLoanSucceedExtraInfo list = testService.getAll();
+        String a = redisManager.get("fpm:sit3:config:dingToken");
         return JSONObject.toJSONString(list);
     }
 }
