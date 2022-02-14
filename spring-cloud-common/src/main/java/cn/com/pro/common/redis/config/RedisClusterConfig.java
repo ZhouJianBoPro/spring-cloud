@@ -65,8 +65,7 @@ public class RedisClusterConfig {
     @Value("${spring.redis.password}")
     private String password;
 
-    @Bean
-    public JedisPoolConfig jedisPoolConfig() {
+    private JedisPoolConfig jedisPoolConfig() {
 
         JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
         jedisPoolConfig.setMaxTotal(maxTotal);
