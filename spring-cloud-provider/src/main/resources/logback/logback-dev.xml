@@ -73,7 +73,7 @@
 		<appender-ref ref="CONSOLE" />
 	</root>
 
-	<logger name="cn.com.tsfa.fpm.biz" level="DEBUG" additivity="false">
+	<logger name="cn.com.pro.provider" level="DEBUG" additivity="false">
 		<appender-ref ref="CONSOLE" />
 		<appender-ref ref="ALL_LOG" />
 		<appender-ref ref="ERROR_LOG" />
