@@ -1,10 +1,9 @@
 package cn.com.pro.provider.rest;
 
 import cn.com.pro.common.redis.RedisManager;
-import cn.com.pro.provider.db.model.TLoanSucceedExtraInfo;
-import cn.com.pro.provider.db.service.ITestService;
+import cn.com.pro.provider.db.model.FundNodeConfig;
+import cn.com.pro.provider.db.service.IFundNodeConfigService;
 import com.alibaba.fastjson.JSONObject;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,16 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestRest {
 
     @Autowired
-    private ITestService testService;
+    private IFundNodeConfigService fundNodeConfigService;
 
-    @Autowired
-    private RedisManager redisManager;
+    @RequestMapping(value = "/getFundNodeConfigDetail", method = RequestMethod.GET)
+    String getFundNodeConfigDetail(@RequestParam("fundId") String fundId, @RequestParam("nodeCode") String nodeCode) {
 
-    @RequestMapping(value = "/testMethod1", method = RequestMethod.GET)
-    String testMethod1(@RequestParam("name") String name) {
-
-        TLoanSucceedExtraInfo list = testService.getAll();
-        String a = redisManager.get("fpm:sit3:config:dingToken");
-        return JSONObject.toJSONString(list);
+        FundNodeConfig fundNodeConfig = fundNodeConfigService.queryByFundIdAndNodeCode(fundId, nodeCode);
+        return JSONObject.toJSONString(fundNodeConfig);
     }
 }

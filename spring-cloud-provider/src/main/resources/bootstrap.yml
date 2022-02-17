@@ -11,5 +11,5 @@ spring:
 
 mybatis:
   type-aliases-package: cn.com.pro.provider.db.model
-  mapper-locations: classpath:mysqlXml/*.xml
+  mapper-locations: classpath:mapper/*.xml
 

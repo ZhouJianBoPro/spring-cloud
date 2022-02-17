@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @Description:
  * @date Created in 2022/1/21 17:10
  **/
-@FeignClient(value = "spring-cloud-provider")
+@FeignClient(name = "spring-cloud-provider")
 public interface TestApi {
 
-    @RequestMapping(value = "/testMethod1", method = RequestMethod.GET)
-    String users(@RequestParam("name") String name);
+    @RequestMapping(value = "/getFundNodeConfigDetail", method = RequestMethod.GET)
+    String test(@RequestParam("fundId") String fundId, @RequestParam("nodeCode") String nodeCode);
 
 }

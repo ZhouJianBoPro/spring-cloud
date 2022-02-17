@@ -1,6 +1,8 @@
 # bootstrap.yml 配置加载顺序优于 application.yml
 server:
   port: 8082
+  servlet:
+    context-path: /spring-cloud-consumer
 
 spring:
   application:

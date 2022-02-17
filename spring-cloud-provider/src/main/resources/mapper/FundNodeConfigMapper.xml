@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.pro.provider.db.mapper.FundNodeConfigMapper">
+  <resultMap id="BaseResultMap" type="cn.com.pro.provider.db.model.FundNodeConfig">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="fund_id" jdbcType="VARCHAR" property="fundId" />
+    <result column="node_code" jdbcType="VARCHAR" property="nodeCode" />
+    <result column="max_concurrent_num" jdbcType="INTEGER" property="maxConcurrentNum" />
+    <result column="fail_retry_count" jdbcType="INTEGER" property="failRetryCount" />
+    <result column="init_delay_level" jdbcType="INTEGER" property="initDelayLevel" />
+    <result column="retry_delay_level" jdbcType="INTEGER" property="retryDelayLevel" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, fund_id, node_code, max_concurrent_num, fail_retry_count, init_delay_level, retry_delay_level, 
+    remark
+  </sql>
+  <select id="selectByExample" parameterType="cn.com.pro.provider.db.model.FundNodeConfigExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_fund_node_config
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_fund_node_config
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_fund_node_config
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.com.pro.provider.db.model.FundNodeConfigExample">
+    delete from t_fund_node_config
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.com.pro.provider.db.model.FundNodeConfig">
+    insert into t_fund_node_config (id, fund_id, node_code, 
+      max_concurrent_num, fail_retry_count, init_delay_level, 
+      retry_delay_level, remark)
+    values (#{id,jdbcType=BIGINT}, #{fundId,jdbcType=VARCHAR}, #{nodeCode,jdbcType=VARCHAR}, 
+      #{maxConcurrentNum,jdbcType=INTEGER}, #{failRetryCount,jdbcType=INTEGER}, #{initDelayLevel,jdbcType=INTEGER}, 
+      #{retryDelayLevel,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.pro.provider.db.model.FundNodeConfig">
+    insert into t_fund_node_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="fundId != null">
+        fund_id,
+      </if>
+      <if test="nodeCode != null">
+        node_code,
+      </if>
+      <if test="maxConcurrentNum != null">
+        max_concurrent_num,
+      </if>
+      <if test="failRetryCount != null">
+        fail_retry_count,
+      </if>
+      <if test="initDelayLevel != null">
+        init_delay_level,
+      </if>
+      <if test="retryDelayLevel != null">
+        retry_delay_level,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="fundId != null">
+        #{fundId,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeCode != null">
+        #{nodeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="maxConcurrentNum != null">
+        #{maxConcurrentNum,jdbcType=INTEGER},
+      </if>
+      <if test="failRetryCount != null">
+        #{failRetryCount,jdbcType=INTEGER},
+      </if>
+      <if test="initDelayLevel != null">
+        #{initDelayLevel,jdbcType=INTEGER},
+      </if>
+      <if test="retryDelayLevel != null">
+        #{retryDelayLevel,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.com.pro.provider.db.model.FundNodeConfigExample" resultType="java.lang.Long">
+    select count(*) from t_fund_node_config
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_fund_node_config
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.fundId != null">
+        fund_id = #{record.fundId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nodeCode != null">
+        node_code = #{record.nodeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.maxConcurrentNum != null">
+        max_concurrent_num = #{record.maxConcurrentNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.failRetryCount != null">
+        fail_retry_count = #{record.failRetryCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.initDelayLevel != null">
+        init_delay_level = #{record.initDelayLevel,jdbcType=INTEGER},
+      </if>
+      <if test="record.retryDelayLevel != null">
+        retry_delay_level = #{record.retryDelayLevel,jdbcType=INTEGER},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_fund_node_config
+    set id = #{record.id,jdbcType=BIGINT},
+      fund_id = #{record.fundId,jdbcType=VARCHAR},
+      node_code = #{record.nodeCode,jdbcType=VARCHAR},
+      max_concurrent_num = #{record.maxConcurrentNum,jdbcType=INTEGER},
+      fail_retry_count = #{record.failRetryCount,jdbcType=INTEGER},
+      init_delay_level = #{record.initDelayLevel,jdbcType=INTEGER},
+      retry_delay_level = #{record.retryDelayLevel,jdbcType=INTEGER},
+      remark = #{record.remark,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.pro.provider.db.model.FundNodeConfig">
+    update t_fund_node_config
+    <set>
+      <if test="fundId != null">
+        fund_id = #{fundId,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeCode != null">
+        node_code = #{nodeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="maxConcurrentNum != null">
+        max_concurrent_num = #{maxConcurrentNum,jdbcType=INTEGER},
+      </if>
+      <if test="failRetryCount != null">
+        fail_retry_count = #{failRetryCount,jdbcType=INTEGER},
+      </if>
+      <if test="initDelayLevel != null">
+        init_delay_level = #{initDelayLevel,jdbcType=INTEGER},
+      </if>
+      <if test="retryDelayLevel != null">
+        retry_delay_level = #{retryDelayLevel,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.pro.provider.db.model.FundNodeConfig">
+    update t_fund_node_config
+    set fund_id = #{fundId,jdbcType=VARCHAR},
+      node_code = #{nodeCode,jdbcType=VARCHAR},
+      max_concurrent_num = #{maxConcurrentNum,jdbcType=INTEGER},
+      fail_retry_count = #{failRetryCount,jdbcType=INTEGER},
+      init_delay_level = #{initDelayLevel,jdbcType=INTEGER},
+      retry_delay_level = #{retryDelayLevel,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

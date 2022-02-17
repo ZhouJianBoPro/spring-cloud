@@ -29,7 +29,7 @@
         </javaModelGenerator>
 
         <!-- targetProject:mapper映射文件生成的位置-->
-        <sqlMapGenerator targetPackage="mysqlXml" targetProject="src/main/resources">
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false" />
         </sqlMapGenerator>
@@ -41,6 +41,6 @@
         </javaClientGenerator>
 
         <!-- 指定数据库表 -->
-        <table tableName="t_loan_succeed_extra_info" domainObjectName="TLoanSucceedExtraInfo"/>
+        <table tableName="t_fund_node_config" domainObjectName="FundNodeConfig"/>
     </context>
 </generatorConfiguration>
