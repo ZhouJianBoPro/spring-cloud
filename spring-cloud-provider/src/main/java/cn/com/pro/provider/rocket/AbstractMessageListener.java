@@ -64,9 +64,8 @@ public abstract class AbstractMessageListener implements MessageListenerConcurre
      * 业务逻辑处理
      * @param messageExt
      * @return ConsumeResult
-     * @throws Exception
      */
-    protected abstract ConsumeResult businessProcess(MessageExt messageExt) throws Exception;
+    protected abstract ConsumeResult businessProcess(MessageExt messageExt);
 
     @Override
     public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> messageExtList, ConsumeConcurrentlyContext context) {
@@ -77,7 +76,7 @@ public abstract class AbstractMessageListener implements MessageListenerConcurre
             Thread.currentThread().setName(idGenerate.genSerialNo(exps.getTags()));
 
             String lockKey = RedisKeyConst.MESSAGE_CONSUME_LOCK + ":" + getConsumeGroup() + ":" + exps.getKeys();
-            boolean lock = redisManager.lock(lockKey,"1", 60 * 60);
+            boolean lock = redisManager.lock(lockKey,"1", 60 * 60L);
             if (!lock) {
                 log.info("消息正在被处理, 本次不处理, messageKey = {}", exps.getKeys());
                 return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;

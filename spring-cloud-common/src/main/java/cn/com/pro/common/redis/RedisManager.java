@@ -101,7 +101,7 @@ public class RedisManager {
      * @param seconds
      * @return boolean
      */
-    public boolean lock(String key, String value, int seconds) {
+    public boolean lock(String key, String value, long seconds) {
 
         try {
             String res = jedisCluster.set(key, value, "nx", "ex", seconds);

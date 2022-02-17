@@ -17,3 +17,5 @@ spring:
         password: spring-cloud
 
 
+logging:
+  config: classpath:logback/logback-dev.xml

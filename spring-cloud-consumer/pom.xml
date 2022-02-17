@@ -49,6 +49,11 @@
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>
+
         <!--配置中心-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>

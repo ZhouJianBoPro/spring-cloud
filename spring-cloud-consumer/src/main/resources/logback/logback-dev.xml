@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
-	<contextName>spring-cloud-provider</contextName>
+	<contextName>spring-cloud-consumer</contextName>
 
 	<!-- 定义日志文件 输入位置 -->
-	<property name="log_dir" value="/data/spring-cloud-provider/logs" />
+	<property name="log_dir" value="/data/spring-cloud-consumer/logs" />
 	<!-- 日志最大的历史 30天 -->
 	<property name="maxHistory" value="30" />
 
 	<!-- ================================ 文件日志(同步)输出============================ -->
 	<!-- 业务日志，开发环境使用 -->
 	<appender name="ERROR_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${log_dir}/spring-cloud-provider-error.log</file>
+		<file>${log_dir}/spring-cloud-consumer-error.log</file>
 		<append>true</append>
 
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- 按天回滚 daily -->
-			<fileNamePattern>${log_dir}/spring-cloud-provider-error-log-%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+			<fileNamePattern>${log_dir}/spring-cloud-consumer-error-log-%d{yyyy-MM-dd}-%i.log</fileNamePattern>
 			<maxHistory>${maxHistory}</maxHistory>
 			<TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
 				<MaxFileSize>50MB</MaxFileSize>
@@ -35,12 +35,12 @@
 	</appender>
 
 	<appender name="ALL_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${log_dir}/spring-cloud-provider-all.log</file>
+		<file>${log_dir}/spring-cloud-consumer-all.log</file>
 		<append>true</append>
 
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- 按天回滚 daily -->
-			<fileNamePattern>${log_dir}/spring-cloud-provider-all-log-%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+			<fileNamePattern>${log_dir}/spring-cloud-consumer-all-log-%d{yyyy-MM-dd}-%i.log</fileNamePattern>
 			<maxHistory>${maxHistory}</maxHistory>
 			<TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
 				<MaxFileSize>50MB</MaxFileSize>
@@ -73,7 +73,7 @@
 		<appender-ref ref="CONSOLE" />
 	</root>
 
-	<logger name="cn.com.pro.provider" level="DEBUG" additivity="false">
+	<logger name="cn.com.pro.consumer" level="DEBUG" additivity="false">
 		<appender-ref ref="CONSOLE" />
 		<appender-ref ref="ALL_LOG" />
 		<appender-ref ref="ERROR_LOG" />
