@@ -1,4 +1,4 @@
-package cn.com.pro.common.enums;
+package cn.com.pro.provider.enums;
 
 /**
  * @author zhoujianbo

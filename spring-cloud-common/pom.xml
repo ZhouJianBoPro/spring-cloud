@@ -20,6 +20,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.cn.pro</groupId>
+            <artifactId>spring-cloud-util</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-context</artifactId>
         </dependency>
@@ -40,12 +46,6 @@
             <groupId>org.apache.rocketmq</groupId>
             <artifactId>rocketmq-client</artifactId>
             <version>${rocketmq.clinet.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.wsxd.dingding</groupId>
-            <artifactId>dd-sdk</artifactId>
-            <version>1.0</version>
         </dependency>
 
     </dependencies>

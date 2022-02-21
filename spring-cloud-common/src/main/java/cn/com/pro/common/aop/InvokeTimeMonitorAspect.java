@@ -2,7 +2,8 @@ package cn.com.pro.common.aop;
 
 import cn.com.pro.common.annotation.InvokeTimeMonitor;
 import cn.com.pro.common.redis.RedisManager;
-import cn.com.pro.common.util.DingTalkUtil;
+import cn.com.pro.util.utils.DateTimeUtil;
+import cn.com.pro.util.utils.DingTalkUtil;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -14,8 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * @author zhoujianbo
@@ -72,8 +71,7 @@ public class InvokeTimeMonitorAspect {
     private String getContext(String className, String methodName, long invokeTimeMills) {
 
         StringBuilder sb = new StringBuilder("## **------接口调用耗时告警------** \n");
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        sb.append("#### **时间：** ").append(df.format(new Date())).append("\n")
+        sb.append("#### **时间：** ").append(DateTimeUtil.getCurrentYYYYMMDDHHMMSS()).append("\n")
                 .append("#### **类名：** ").append(className).append("\n")
                 .append("#### **接口名称：** ").append(methodName).append("\n")
                 .append("#### **调用耗时：** ").append(invokeTimeMills).append("ms");

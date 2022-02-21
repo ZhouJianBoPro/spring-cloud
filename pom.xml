@@ -12,6 +12,7 @@
         <module>spring-cloud-provider</module>
         <module>spring-cloud-consumer</module>
         <module>spring-cloud-common</module>
+        <module>spring-cloud-util</module>
     </modules>
     <packaging>pom</packaging>
 

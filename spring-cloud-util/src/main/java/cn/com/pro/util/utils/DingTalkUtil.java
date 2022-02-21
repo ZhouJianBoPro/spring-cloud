@@ -1,4 +1,4 @@
-package cn.com.pro.common.util;
+package cn.com.pro.util.utils;
 
 import com.alibaba.fastjson.JSONObject;
 import com.dingtalk.api.DefaultDingTalkClient;
@@ -6,8 +6,8 @@ import com.dingtalk.api.request.OapiRobotSendRequest;
 import com.dingtalk.api.response.OapiRobotSendResponse;
 import com.taobao.api.ApiException;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.util.CollectionUtils;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -33,7 +33,7 @@ public class DingTalkUtil {
 
         OapiRobotSendRequest.At at = new OapiRobotSendRequest.At();
         at.setIsAtAll(String.valueOf(isAtAll));
-        if (!CollectionUtils.isEmpty(mobileList)) {
+        if (!mobileList.isEmpty()) {
             at.setAtMobiles(mobileList);
         }
         request.setAt(at);

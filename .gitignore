@@ -9,8 +9,10 @@
 /spring-cloud-common/target
 /spring-cloud-consumer/target
 /spring-cloud-provider/target
+/spring-cloud-util/target
 /spring-cloud-api/*.iml
 /spring-cloud-common/*.iml
 /spring-cloud-consumer/*.iml
 /spring-cloud-provider/*.iml
+/spring-cloud-util/*.iml
 
