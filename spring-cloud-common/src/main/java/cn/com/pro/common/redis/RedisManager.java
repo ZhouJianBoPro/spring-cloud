@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import redis.clients.jedis.JedisCluster;
+import redis.clients.jedis.params.SetParams;
 
 import java.util.*;
 
@@ -38,7 +39,10 @@ public class RedisManager {
     public boolean setNxEx(String key, String value, long expireSeconds) {
 
         try {
-            String res = jedisCluster.set(key, value, "nx", "ex", expireSeconds);
+            SetParams params = new SetParams();
+            params.nx();
+            params.ex(expireSeconds);
+            String res = jedisCluster.set(key, value, params);
             return StringUtils.isNotEmpty(res);
         } catch (Exception e) {
             log.error("setNxEx异常, key = {}, value = {}, expireSeconds = {}", key, value, expireSeconds, e);
@@ -104,7 +108,10 @@ public class RedisManager {
     public boolean lock(String key, String value, long seconds) {
 
         try {
-            String res = jedisCluster.set(key, value, "nx", "ex", seconds);
+            SetParams params = new SetParams();
+            params.nx();
+            params.ex(seconds);
+            String res = jedisCluster.set(key, value, params);
             return StringUtils.isNotEmpty(res);
         } catch (Exception e) {
             log.error("lock异常, key = {}, value = {}, seconds = {}", key, value, seconds, e);
