@@ -64,12 +64,5 @@ rocket:
     retryTimesWhenSendFailed: 3
     instanceName: spring-cloud-provider
 
-snow:
-  flake:
-    machine:
-      id: 0
-    dataCenter:
-      id: 0
-
 logging:
   config: classpath:logback/logback-dev.xml

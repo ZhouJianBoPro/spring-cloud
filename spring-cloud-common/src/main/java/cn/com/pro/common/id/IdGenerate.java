@@ -1,12 +1,17 @@
 package cn.com.pro.common.id;
 
+import cn.com.pro.common.redis.RedisManager;
 import cn.com.pro.util.utils.DateTimeUtil;
+import cn.com.pro.util.utils.IpUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.net.UnknownHostException;
 import java.util.Date;
 
 /**
@@ -20,16 +25,22 @@ import java.util.Date;
 @Scope("singleton")
 public class IdGenerate {
 
-    @Value("${snow.flake.machine.id}")
-    private long machineId;
-
-    @Value("${snow.flake.dataCenter.id}")
-    private long dataCenterId;
+    @Value("${server.port}")
+    private String serverPort;
 
     private SnowFlake snowFlake;
 
+    @Autowired
+    private RedisManager redisManager;
+
     @PostConstruct
-    public void init() {
+    public void init() throws UnknownHostException {
+
+        String val = getConfVal(serverPort);
+        String[] arr = val.split(":");
+
+        long dataCenterId = Long.parseLong(arr[0]);
+        long machineId = Long.parseLong(arr[1]);
         log.info("初始化SnowFlake dataCenterId:{}, machineId:{}", dataCenterId, machineId);
         snowFlake = new SnowFlake(dataCenterId, machineId);
     }
@@ -70,6 +81,17 @@ public class IdGenerate {
             return String.format("%015d", snowflakeNo);
         }
         return String.valueOf(snowflakeNo);
+    }
+
+    private String getConfVal(String serverPort) throws UnknownHostException {
+
+        String intranetIp = IpUtil.getIntranetIp();
+        String key = intranetIp + ":" + serverPort;
+        String val = redisManager.get(key);
+        if(StringUtils.isEmpty(val)) {
+            throw new RuntimeException("应用IP和端口配置不存在");
+        }
+        return val;
     }
 
 }
