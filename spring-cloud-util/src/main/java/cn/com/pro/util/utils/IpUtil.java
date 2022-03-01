@@ -19,7 +19,7 @@ public class IpUtil {
      * @return
      */
     public static String getIntranetIp() throws UnknownHostException {
-        InetAddress addr = (InetAddress) InetAddress.getLocalHost();
+        InetAddress addr = InetAddress.getLocalHost();
         return addr.getHostAddress();
     }
 
